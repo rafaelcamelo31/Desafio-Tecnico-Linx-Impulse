@@ -1,0 +1,28 @@
+{
+  "name": "desafio-tecnico-linx-impulse",
+  "version": "1.0.0",
+  "description": "Implementação de um sistema contendo mais de uma camada, duas de backend e uma de frontend. A aplicação a ser desenvolvida, é um sistema para exibir as vitrines de recomendação em um site, o sistema deverá conter 3 camadas.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "catalog": "nodemon api-catalog/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelcamelo31/Desafio-Tecnico-Linx-Impulse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafaelcamelo31/Desafio-Tecnico-Linx-Impulse/issues"
+  },
+  "homepage": "https://github.com/rafaelcamelo31/Desafio-Tecnico-Linx-Impulse#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.8"
+  }
+}
