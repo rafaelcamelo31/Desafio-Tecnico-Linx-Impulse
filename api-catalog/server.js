@@ -1,14 +1,14 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-import catalogRoutes from "./routes/catalogRoutes.js"
+import productRoutes from "./routes/productRoutes.js"
 
 dotenv.config()
 connectDB();
 
 const app = express();
 
-app.use("/api/catalog", catalogRoutes);
+app.use("/api/products", productRoutes);
 
 const PORT = process.env.PORT || 5000;
 
