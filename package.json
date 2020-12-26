@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "catalog": "nodemon api-catalog/server"
+    "catalog": "nodemon api-catalog/server",
+    "recommendation": "nodemon api-recommendation/server"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "nodemon": "^2.0.6"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.11.8"
