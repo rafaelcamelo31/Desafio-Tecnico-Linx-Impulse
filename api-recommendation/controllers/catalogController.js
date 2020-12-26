@@ -14,6 +14,7 @@ async function getProducts(id) {
 const getCatalog = (async (req, res) => {
     try {
         let productIds = [];
+        let catalog = [];
 
         await axios.get(process.env.MOST_POPULAR)
             .then(response => {
@@ -27,9 +28,12 @@ const getCatalog = (async (req, res) => {
             return getProducts(id);
         }));
 
-        result.map(response => console.log(response));
-        // const x = await getProducts(10)
-        // console.log(x)
+        result.map(response => {
+            if (response.id) {
+                catalog.push(response);
+            }
+        });
+        res.status(200).json(catalog);
 
     }
     catch (error) {
