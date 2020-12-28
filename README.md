@@ -3,7 +3,7 @@ Implementação de um sistema contendo mais de uma camada, duas de backend e uma
 
 
 ### Screenshot do postman, retornando a resposta do http://localhost:4000/api/catalog?maxProduct=16
-<img src="api-recommendation.png" width="250" height="250">
+<img src="api-recommendation.png" width="75%" height="100%">
 
 ### GIF do carousel de Produtos Mais Vendidos - Incompleto
-<img src="Peek 2020-12-28 06-23.gif" width="250" height="250">
+<img src="Peek 2020-12-28 06-23.gif" width="75%" height="100%">
