@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css" />
+    <title>Vitrine de recomendação</title>
+</head>
+
+<body>
+    <h1>Mais Vendidos</h1>
+    <div class="carousel-container">
+
+        <div class="carousel-inner">
+            <div class="track">
+                <div id="card-container"></div>
+            </div>
+        </div>
+
+        <div class="nav">
+            <button class="prev">
+                <span class="material-icons">
+                    keyboard_arrow_left
+                </span>
+            </button>
+            <button class="next">
+                <span class="material-icons">
+                    keyboard_arrow_right
+                </span>
+            </button>
+        </div>
+
+    </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script>
+    const prev = document.querySelector(".prev")
+    const next = document.querySelector(".next")
+
+    const track = document.querySelector(".track")
+
+    const carouselWidth = document.querySelector(".carousel-container").offsetWidth
+
+    let index = 0;
+
+    next.addEventListener('click', () => {
+        index++;
+        prev.classList.add('show');
+        track.style.transform = `translateX(-${index * carouselWidth}px)`;
+
+        if (track.offsetWidth - (index * carouselWidth) <= carouselWidth) {
+            next.classList.add('hide');
+        }
+    })
+
+    prev.addEventListener('click', () => {
+        index--;
+        next.classList.remove('hide');
+        if (index === 0) {
+            prev.classList.remove('show');
+        }
+        track.style.transform = `translateX(-${index * carouselWidth}px)`;
+    })
+
+    axios.get('http://localhost:4000/api/catalog?maxProduct=16')
+        .then(response => listProduct(response.data.popular))
+        .catch(error => console.log(error))
+
+    function listProduct(apiResult) {
+        apiResult.map(product => {
+            let cardContainer = document.createElement("div")
+            cardContainer.classList = "card-container"
+
+            let card = document.createElement("div")
+            card.classList = "card"
+            cardContainer.appendChild(card)
+
+
+            let image = document.createElement("div")
+            image.classList = "img"
+            image.innerHTML = `<img class="pic" src=${product.complete.images.default}></img>`
+            card.appendChild(image)
+
+            let info = document.createElement("div")
+            info.classList = "info"
+            info.innerHTML = product.complete.name
+            card.appendChild(info)
+
+            let track = document.querySelector(".track")
+            track.appendChild(cardContainer)
+        })
+    }
+</script>
+
+</html>
